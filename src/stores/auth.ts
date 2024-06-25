@@ -4,7 +4,7 @@ import type { user } from '@/utils/type'
 
 export const useAuthStore = defineStore('authStore', {
   state: () => ({
-    user: { name: 'Truyendz', age: 20 } as user | null,
+    user: null as user | null,
     isLoggedIn: false,
   }),
   actions: {
