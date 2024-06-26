@@ -9,11 +9,9 @@ axiosApiInstance.defaults.baseURL = import.meta.env.VITE_API_URL
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
   async (config: any) => {
-    const access_token = localStorage.getItem('access_token')
-    config.headers = {
-      'Authorization': `Bearer ${access_token}`,
-      'Accept': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
+    if (config.url.includes('null') || config.url.includes('undefined') || config.url.includes('//')) {
+      console.error('config', config)
+      return Promise.reject(new Error('Invalid config'))
     }
     return config
   },
